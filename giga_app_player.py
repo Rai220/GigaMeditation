@@ -15,7 +15,7 @@ if "chat_user_id" not in st.session_state:
     st.session_state.chat_user_id = str(uuid.uuid4())
 
 
-st.title("🤖 GigaApp playground")
+# st.title("🤖 GigaApp playground")
 
 def send_request(text):
     print(f"Sending request with text: {text}")
