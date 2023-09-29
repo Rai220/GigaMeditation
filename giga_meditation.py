@@ -28,7 +28,7 @@ def _generate_text(topic, backgound):
     return model(
         [
             HumanMessage(
-                content=f"Придумай текст для медитации на 7-10 предложений. Медетирующий будет слышать {backgound}. Тема медитации - {topic}. Текст должен быть расслабляющий и успокаивающий. Не пиши никаких пояснений к тексту."
+                content=f"Придумай текст для сеанса медитации. Медетирующий будет слышать {backgound}. Тема медитации - {topic}. Текст должен быть расслабляющий и успокаивающий. Не пиши никаких пояснений к тексту."
             )
         ]
     ).content.replace("\n", "")
@@ -45,7 +45,7 @@ def _get_tts_token():
     }
 
     response = requests.request(
-        "POST", url, headers=headers, data=payload, verify=False, timeout=3
+        "POST", url, headers=headers, data=payload, verify=False, timeout=15
     )
 
     if response.ok:
@@ -107,7 +107,7 @@ if st.button(
     disabled=st.session_state.get("started", False),
 ):
     with st.status(
-        f"Создаю медитацию, это займет около 30 секунд. Пока представьте, что рядом {genre}",
+        f"Создаю медитацию, это займет около 30 секунд. Пока расслабьтесь и настройтесь на позитивную волну ",
         expanded=True,
     ) as status:
         st.write("Пишу текст...")
