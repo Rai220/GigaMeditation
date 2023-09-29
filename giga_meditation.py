@@ -86,10 +86,6 @@ def _get_audio(text, backgound, token):
 def start_btn():
     st.session_state.started = True
 
-
-st.title("Добро пожаловать в GigaZen 🧘🏻‍♀️")
-st.subheader("ГигаЧат и SaluteVoice помогут вам создать персональную медитацию.")
-
 st.set_page_config(
     page_title="GigaZen 🧘🏻‍♀️",
     page_icon="🧘🏻‍♀️",
@@ -97,6 +93,9 @@ st.set_page_config(
         'About': "# This is an *extremely* cool app, developed by @Krestnikov",
     }
 )
+
+st.title("Добро пожаловать в GigaZen 🧘🏻‍♀️")
+st.subheader("ГигаЧат и SaluteVoice помогут вам создать персональную медитацию.")
 
 topic = st.text_input(
     "Введите тему для медитации (например 'весенний сад' или 'новый автомобиль')",
