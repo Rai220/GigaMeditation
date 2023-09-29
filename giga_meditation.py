@@ -9,6 +9,8 @@ import streamlit as st
 from langchain.chat_models.gigachat import GigaChat
 from langchain.schema import HumanMessage, SystemMessage
 
+import retrying
+
 gigachat_user = os.environ.get("GIGA_USER", None)
 gigachat_password = os.environ.get("GIGA_PASSWORD", None)
 tts_auth = os.environ.get("TTS_AUTH", None)
@@ -33,7 +35,7 @@ def _generate_text(topic, backgound):
         ]
     ).content.replace("\n", "")
 
-
+@retrying.retry(stop_max_attempt_number=3, wait_fixed=1000)
 def _get_tts_token():
     url = "https://ngw.devices.sberbank.ru:9443/api/v2/oauth"
 
@@ -45,7 +47,7 @@ def _get_tts_token():
     }
 
     response = requests.request(
-        "POST", url, headers=headers, data=payload, verify=False, timeout=15
+        "POST", url, headers=headers, data=payload, verify=False, timeout=30
     )
 
     if response.ok:
@@ -102,7 +104,7 @@ genre = st.radio("Выберите звуковой фон для медитац
 backgound = sounds[genre]
 
 if st.button(
-    "Начать медитацию",
+    "Создать медитацию",
     on_click=start_btn,
     disabled=st.session_state.get("started", False),
 ):
