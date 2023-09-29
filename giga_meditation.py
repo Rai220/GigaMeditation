@@ -25,7 +25,7 @@ model = GigaChat(
     model="GigaChat70:latest",
 )
 
-
+@retrying.retry(stop_max_attempt_number=3, wait_fixed=1000)
 def _generate_text(topic, backgound):
     return model(
         [
@@ -58,7 +58,7 @@ def _get_tts_token():
     st.stop()
     return None
 
-
+@retrying.retry(stop_max_attempt_number=3, wait_fixed=1000)
 def _get_audio(text, backgound, token):
     url = "https://smartspeech.sber.ru/rest/v1/text:synthesize?format=opus&voice=Bsa_24000"
 
