@@ -133,5 +133,3 @@ if st.button(
     st.info("Ваша медитация готова! Наслаждайтесь!")
     st.audio(data, format="audio/wav")
     st.balloons()
-
-st.set_option()
