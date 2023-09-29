@@ -22,7 +22,8 @@ model = GigaChat(
     password=gigachat_password,
     verify_ssl=False,
     api_base_url=giga_url,
-    model="GigaChat70:latest",
+    # model="GigaChat70:latest",
+    model="GigaChat:latest",
 )
 
 @retrying.retry(stop_max_attempt_number=3, wait_fixed=1000)
