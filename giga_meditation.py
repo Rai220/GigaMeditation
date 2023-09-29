@@ -89,6 +89,15 @@ def start_btn():
 
 st.title("Добро пожаловать в GigaZen 🧘🏻‍♀️")
 st.subheader("ГигаЧат и SaluteVoice помогут вам создать персональную медитацию.")
+
+st.set_page_config(
+    page_title="GigaZen 🧘🏻‍♀️",
+    page_icon="🧘🏻‍♀️",
+    menu_items={
+        'About': "# This is an *extremely* cool app, developed by @Krestnikov",
+    }
+)
+
 topic = st.text_input(
     "Введите тему для медитации (например 'весенний сад' или 'новый автомобиль')",
     value="утро на море",
@@ -125,3 +134,5 @@ if st.button(
     st.info("Ваша медитация готова! Наслаждайтесь!")
     st.audio(data, format="audio/wav")
     st.balloons()
+
+st.set_option()
