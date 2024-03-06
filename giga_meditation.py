@@ -18,12 +18,12 @@ giga_url = os.environ.get("GIGA_URL", None)
 
 
 model = GigaChat(
+    base_url="https://beta.saluteai.sberdevices.ru/v1",
     user=gigachat_user,
     password=gigachat_password,
     verify_ssl=False,
     api_base_url=giga_url,
-    model="GigaChat70:latest",
-    # model="GigaChat:latest",
+    model="GigaChat-Pro"
 )
 
 @retrying.retry(stop_max_attempt_number=3, wait_fixed=1000)
